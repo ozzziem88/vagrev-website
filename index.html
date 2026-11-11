@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VagRev | Independent VAG Specialist</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        vagred: '#e60012',
+                        vagreddark: '#b3000e',
+                        darkbg: '#0a0a0c',
+                        cardbg: '#141419',
+                        cardborder: '#262630',
+                    },
+                    boxShadow: {
+                        'glow': '0 0 25px rgba(230, 0, 18, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0c;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+        }
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+        /* Custom scrollbar for gallery */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262630;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e60012;
+        }
+    </style>
+</head>
+<body class="bg-darkbg text-gray-100 min-h-screen selection:bg-vagred selection:text-white">
+
+    <!-- Top Navigation -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-darkbg/90 border-b border-cardborder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-vagred text-white font-heading font-extrabold text-xl px-3 py-1.5 rounded tracking-wider shadow-glow">
+                    VR
+                </div>
+                <div>
+                    <span class="font-heading font-extrabold text-xl tracking-tight text-white block leading-none">VAGREV</span>
+                    <span class="text-[10px] uppercase tracking-widest text-vagred font-bold">ASH • H • VAG SPECIALIST</span>
+                </div>
+            </div>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#services" class="hover:text-vagred transition-colors">Services</a>
+                <a href="#builder" class="hover:text-vagred transition-colors">The Specialist</a>
+                <a href="#why-us" class="hover:text-vagred transition-colors">Why VAG?</a>
+                <a href="#gallery" class="hover:text-vagred transition-colors">Gallery</a>
+                <a href="#booking" class="hover:text-vagred transition-colors">Book Online</a>
+            </nav>
+
+            <!-- Right Actions -->
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <a href="tel:0410966099" class="flex items-center space-x-2 text-xs sm:text-sm text-gray-300 bg-cardbg px-3 py-2 rounded-full border border-cardborder hover:border-vagred transition-all">
+                    <i class="fa-solid fa-phone text-vagred"></i>
+                    <span class="font-semibold text-white">0410966099</span>
+                </a>
+                <a href="#booking" class="bg-vagred hover:bg-vagreddark text-white font-heading font-semibold px-4 py-2.5 rounded-lg shadow-lg shadow-vagred/20 transition-all text-xs sm:text-sm">
+                    Book Service
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-16 sm:pt-24 pb-20 sm:pb-32 overflow-hidden bg-grid-pattern">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-darkbg/50 to-darkbg pointer-events-none"></div>
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-96 h-72 sm:h-96 bg-vagred/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center space-x-2 bg-cardbg border border-cardborder px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest text-gray-300 mb-6 sm:mb-8 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-vagred animate-pulse"></span>
+                <span>VW</span>
+                <span class="text-gray-600">•</span>
+                <span>Audi</span>
+                <span class="text-gray-600">•</span>
+                <span>Skoda</span>
+                <span class="text-gray-600">•</span>
+                <span>SEAT</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-7xl lg:text-8xl font-heading font-extrabold tracking-tight text-white mb-6 uppercase">
+                VAG<span class="text-vagred">REV</span>
+            </h1>
+            
+            <p class="text-base sm:text-2xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed mb-8 sm:mb-10 px-2">
+                German Engineering. Real Performance.<br>
+                <span class="text-vagred font-medium">Diagnostics, DSG Services, Engine Faults & Tuning</span>
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
+                <a href="#booking" class="w-full sm:w-auto bg-vagred hover:bg-vagreddark text-white font-heading font-bold text-base sm:text-lg px-8 py-4 rounded-xl shadow-glow transition-all">
+                    <i class="fa-solid fa-calendar-check mr-2"></i> Book a Service
+                </a>
+                <a href="#gallery" class="w-full sm:w-auto bg-cardbg hover:bg-cardborder text-white font-heading font-semibold text-base sm:text-lg px-8 py-4 rounded-xl border border-cardborder transition-all">
+                    <i class="fa-solid fa-images mr-2 text-vagred"></i> View Workshop Gallery
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="services" class="py-16 sm:py-20 bg-darkbg border-t border-cardborder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white uppercase tracking-wider">Specialist Services</h2>
+                <p class="text-gray-400 mt-2 text-sm sm:text-base">Factory-level care without the dealership price tag.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-cardbg border border-cardborder rounded-2xl p-6 hover:border-vagred/50 transition-all">
+                    <div class="w-12 h-12 bg-vagred/10 rounded-xl flex items-center justify-center text-vagred text-xl mb-4">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-2">Advanced Diagnostics</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">OEM-level VAG ODIS scanning & fault diagnosis.</p>
+                </div>
+
+                <div class="bg-cardbg border border-cardborder rounded-2xl p-6 hover:border-vagred/50 transition-all">
+                    <div class="w-12 h-12 bg-vagred/10 rounded-xl flex items-center justify-center text-vagred text-xl mb-4">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-2">DSG Specialist</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Mechatronic repairs, clutch replacement & servicing.</p>
+                </div>
+
+                <div class="bg-cardbg border border-cardborder rounded-2xl p-6 hover:border-vagred/50 transition-all">
+                    <div class="w-12 h-12 bg-vagred/10 rounded-xl flex items-center justify-center text-vagred text-xl mb-4">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-2">ECU & TCU Tuning</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Custom performance maps & reliability tunes.</p>
+                </div>
+
+                <div class="bg-cardbg border border-cardborder rounded-2xl p-6 hover:border-vagred/50 transition-all">
+                    <div class="w-12 h-12 bg-vagred/10 rounded-xl flex items-center justify-center text-vagred text-xl mb-4">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-2">Expert Repairs</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Timing chains, turbo upgrades & engine overhauls.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet The Specialist Section -->
+    <section id="builder" class="py-16 sm:py-20 bg-cardbg/40 border-t border-cardborder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-vagred font-semibold uppercase tracking-widest text-xs">Meet The Specialist</span>
+                    <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white uppercase tracking-wider mt-2 mb-6">Built Different. Built Right.</h2>
+                    <p class="text-gray-300 leading-relaxed mb-4 text-sm sm:text-base">
+                        "I created VAGREV because nobody else out there was truly specializing in straight VAG group cars. Too many general shops just guess their way through German engineering."
+                    </p>
+                    <p class="text-gray-400 leading-relaxed mb-6 text-sm sm:text-base">
+                        With over 4 years of hands-on experience wrenching exclusively on these platforms, my approach is simple: I take care of your vehicles like they're my own. No shortcuts, no corporate runaround—just absolute precision. When I'm not in the bay, you'll probably find me dreaming up or building my ultimate project car: a custom-built WRC 2.0L AWD Polo.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-cardborder">
+                        <div>
+                            <span class="text-xs uppercase tracking-widest text-gray-500 block font-semibold">Experience</span>
+                            <span class="text-lg font-heading font-bold text-white">4+ Years VAG Focused</span>
+                        </div>
+                        <div>
+                            <span class="text-xs uppercase tracking-widest text-gray-500 block font-semibold">Dream Build</span>
+                            <span class="text-lg font-heading font-bold text-white">Custom WRC 2.0L AWD Polo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-cardbg border border-cardborder p-8 rounded-2xl relative shadow-2xl">
+                    <div class="absolute -top-3 -right-3 bg-vagred text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded">Pure German Obsession</div>
+                    <h3 class="text-2xl font-heading font-bold text-white mb-4">The Standard</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                        German cars don't lie. They tell you exactly what's wrong if you actually know how to listen to them and use the right tools. 
+                    </p>
+                    <div class="bg-darkbg border border-cardborder p-4 rounded-xl text-vagred font-heading font-bold text-sm tracking-wide text-center">
+                        "Some guys collect cars. I live, breathe, and bleed VAG platforms. Bring it in, let's fix it right the first time."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us & Brands -->
+    <section id="why-us" class="py-16 sm:py-20 bg-cardbg/50 border-t border-cardborder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-vagred font-semibold uppercase tracking-widest text-xs">The VAGREV Difference</span>
+                <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white uppercase tracking-wider mt-2 mb-6">Built by Enthusiasts, For Enthusiasts</h2>
+                <p class="text-gray-300 leading-relaxed mb-6 text-sm sm:text-base">
+                    Volkswagen, Audi, Skoda, and SEAT vehicles require specialized tools and a deep understanding of German engineering. We diagnose the root cause so you don't waste money.
+                </p>
+                <ul class="space-y-3 text-gray-300 text-sm sm:text-base">
+                    <li class="flex items-center space-x-3">
+                        <i class="fa-solid fa-circle-check text-vagred"></i>
+                        <span>Specialized VAG factory scan tools & software</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <i class="fa-solid fa-circle-check text-vagred"></i>
+                        <span>Transparent pricing & honest technical advice</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <i class="fa-solid fa-circle-check text-vagred"></i>
+                        <span>Genuine and OEM-spec parts and fluids</span>
+                    </li>
+                </ul>
+            </div>
+            <div id="brands" class="bg-cardbg border border-cardborder p-6 sm:p-8 rounded-2xl relative shadow-2xl">
+                <div class="absolute -top-3 -right-3 bg-vagred text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded">VAG Only</div>
+                <h3 class="text-2xl font-heading font-bold text-white mb-4">Supported Brands</h3>
+                <div class="grid grid-cols-2 gap-4 text-center">
+                    <div class="bg-darkbg border border-cardborder p-4 rounded-xl font-heading font-bold text-base sm:text-lg text-white">VOLKSWAGEN</div>
+                    <div class="bg-darkbg border border-cardborder p-4 rounded-xl font-heading font-bold text-base sm:text-lg text-white">AUDI</div>
+                    <div class="bg-darkbg border border-cardborder p-4 rounded-xl font-heading font-bold text-base sm:text-lg text-white">SKODA</div>
+                    <div class="bg-darkbg border border-cardborder p-4 rounded-xl font-heading font-bold text-base sm:text-lg text-white">SEAT</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshop Gallery Section -->
+    <section id="gallery" class="py-16 sm:py-24 bg-darkbg border-t border-cardborder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="text-vagred font-semibold uppercase tracking-widest text-xs">Real Jobs • Real Results</span>
+                <h2 class="text-3xl sm:text-5xl font-heading font-bold text-white uppercase tracking-wider mt-2">Workshop Gallery</h2>
+                <p class="text-gray-400 mt-3 text-sm sm:text-base max-w-2xl mx-auto">
+                    Take a look inside the bay. From DSG rebuilds and timing chain replacements to Stage 2 performance tuning and fault diagnostics.
+                </p>
+            </div>
+
+            <!-- Gallery Cards Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid">
+                <!-- Project cards rendered dynamically or structured directly -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-16 sm:py-20 bg-darkbg border-t border-cardborder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl font-heading font-bold text-white uppercase tracking-wider">Book Your VAG Service</h2>
+                <p class="text-gray-400 mt-2 text-sm sm:text-base">Fill out the form below or chat with Ash on WhatsApp for quick questions.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Info Column -->
+                <div class="bg-cardbg border border-cardborder p-6 sm:p-8 rounded-2xl flex flex-col justify-between space-y-6">
+                    <div>
+                        <h3 class="text-xl font-heading font-bold text-white mb-4">Get In Touch</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-vagred/10 rounded-xl flex items-center justify-center text-vagred text-xl shrink-0">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs uppercase tracking-widest text-gray-400 block font-semibold">Direct Call / Text</span>
+                                    <a href="tel:0410966099" class="text-lg sm:text-xl font-heading font-bold text-white hover:text-vagred transition-colors">0410966099</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-vagred/10 rounded-xl flex items-center justify-center text-vagred text-xl shrink-0">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs uppercase tracking-widest text-gray-400 block font-semibold">Location</span>
+                                    <span class="text-base font-heading font-bold text-white">Melbourne, Victoria</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Column -->
+                <div class="lg:col-span-2 bg-cardbg border border-cardborder p-6 sm:p-8 rounded-2xl">
+                    <!-- Web3Forms Form -->
+                    <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                        <!-- Ash's Web3Forms Access Key -->
+                        <input type="hidden" name="access_key" value="902fafa5-b153-4b87-9975-f72e4e407697">
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs uppercase tracking-widest text-gray-400 font-semibold mb-2">Full Name *</label>
+                                <input type="text" name="name" required placeholder="e.g. John Doe" class="w-full bg-darkbg border border-cardborder rounded-xl px-4 py-3 text-white focus:outline-none focus:border-vagred">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-widest text-gray-400 font-semibold mb-2">Phone Number *</label>
+                                <input type="tel" name="phone" required placeholder="e.g. 0400 000 000" class="w-full bg-darkbg border border-cardborder rounded-xl px-4 py-3 text-white focus:outline-none focus:border-vagred">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs uppercase tracking-widest text-gray-400 font-semibold mb-2">Vehicle Make & Model *</label>
+                                <input type="text" name="vehicle" required placeholder="e.g. Audi S3 / VW Golf GTI" class="w-full bg-darkbg border border-cardborder rounded-xl px-4 py-3 text-white focus:outline-none focus:border-vagred">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-widest text-gray-400 font-semibold mb-2">Vehicle Year *</label>
+                                <input type="text" name="year" required placeholder="e.g. 2021" class="w-full bg-darkbg border border-cardborder rounded-xl px-4 py-3 text-white focus:outline-none focus:border-vagred">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-gray-400 font-semibold mb-2">Select Service Required *</label>
+                            <select name="service" class="w-full bg-darkbg border border-cardborder rounded-xl px-4 py-3 text-white focus:outline-none focus:border-vagred">
+                                <option>Advanced Diagnostics & Fault Finding</option>
+                                <option>DSG Service & Mechatronic Repair</option>
+                                <option>ECU & TCU Performance Tuning</option>
+                                <option>General Maintenance & Timing Chain</option>
+                                <option>Other Specialist Repair</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-gray-400 font-semibold mb-2">Additional Details / Symptoms</label>
+                            <textarea name="message" rows="3" placeholder="Describe any engine noises, warning lights, or performance goals..." class="w-full bg-darkbg border border-cardborder rounded-xl px-4 py-3 text-white focus:outline-none focus:border-vagred"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-vagred hover:bg-vagreddark text-white font-heading font-bold py-4 rounded-xl shadow-glow transition-all">
+                            <i class="fa-solid fa-paper-plane mr-2"></i> Submit Booking Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Direct Button -->
+    <a href="https://wa.me/61410966099?text=Hi%20Ash,%20I%20have%20a%20question%20about%20my%20car:" target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-700 text-white font-heading font-bold px-4 py-3 rounded-full shadow-2xl flex items-center space-x-2 transition-all hover:scale-105 border border-emerald-500">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+        <span class="text-sm">Chat with Ash</span>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-cardbg border-t border-cardborder py-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2026 VAGREV VAG Specialist (Ash • H). All rights reserved.</p>
+    </footer>
+
+    <!-- Gallery & Carousel Script -->
+    <script>
+        // Array of 14 Workshop Jobs with photos & details
+        const galleryJobs = [
+            {
+                title: "Audi A5 — Timing Chain Service",
+                category: "Engine Mechanical",
+                description: "Completed a full timing chain service and precision engine mechanical repair.",
+                photos: ["audi-a5-1.jpg", "audi-a5-2.jpg", "audi-a5-3.jpg", "audi-a5-4.jpg", "audi-a5-5.jpg", "audi-a5-6.jpg", "audi-a5-7.jpg"]
+            },
+            {
+                title: "VW Scirocco R — Scheduled Logbook Service",
+                category: "Maintenance",
+                description: "Brought in for a comprehensive scheduled logbook service and workshop inspection.",
+                photos: ["scirocco-service.jpg"]
+            },
+            {
+                title: "VW Golf Mk6 GTI — Front-End Rebuild & Stage 2 Tune",
+                category: "Rebuild & Tuning",
+                description: "Front-end damage rebuild paired with a Stage 2 ECU & TCU tune and major servicing.",
+                photos: ["mk6-gti-1.jpg", "mk6-gti-2.jpg", "mk6-gti-3.jpg", "mk6-gti-4.jpg"]
+            },
+            {
+                title: "Audi S3 — IE Performance Cold Air Intake & Stage 1 Tune",
+                category: "Performance Hardware",
+                description: "Installed an Integrated Engineering (IE) cold air intake system before completing a custom Stage 1 performance tune.",
+                photos: ["audi-s3-1.jpg", "audi-s3-2.jpg"]
+            },
+            {
+                title: "1.4L DQ200 DSG — Clutch Failure & Thermostat Leak Repair",
+                category: "DSG Specialist",
+                description: "Diagnosed and repaired DQ200 clutch and flywheel failure caused by thermostat coolant leaks between the battery and engine.",
+                photos: ["dq200-clutch-1.jpg", "dq200-clutch-2.jpg", "dq200-clutch-3.jpg", "dq200-clutch-4.jpg"]
+            },
+            {
+                title: "VW Polo 6R Twincharge — Diverter Valve Spacer Install",
+                category: "Upgrades",
+                description: "Precision fitment of an aftermarket diverter valve spacer on a tight VW Polo 6R twincharged engine bay.",
+                photos: ["polo-diverter-valve.jpg"]
+            },
+            {
+                title: "VW Golf Mk7 GTI — Stage 2 Performance Tune",
+                category: "Tuning",
+                description: "Completed a custom Stage 2 performance calibration and engine bay setup.",
+                photos: ["mk7-gti-1.jpg", "mk7-gti-2.jpg"]
+            },
+            {
+                title: "VW Golf Mk7.5 R Wagon — Oil Service & Inspection",
+                category: "Maintenance",
+                description: "Scheduled oil service and comprehensive multi-point workshop inspection.",
+                photos: ["mk75-r-wagon-1.jpg", "mk75-r-wagon-2.jpg"]
+            },
+            {
+                title: "VW Golf Mk5 R32 — Smoke Testing & Lean Running Diagnostics",
+                category: "Diagnostics",
+                description: "Pinpointed intake and vacuum leaks causing lean running conditions using workshop smoke testing.",
+                photos: ["mk5-r32-1.jpg", "mk5-r32-2.jpg", "mk5-r32-3.jpg"]
+            },
+            {
+                title: "Audi S3 — Oil Pan Replacement & Service",
+                category: "Repair & Service",
+                description: "Replaced damaged oil pan and completed a fresh oil and filter service.",
+                photos: ["audi-s3-oilpan-1.jpg", "audi-s3-oilpan-2.jpg"]
+            },
+            {
+                title: "VW Golf Mk5 GTI — Pre-Tune Fueling & PCV Upgrade Service",
+                category: "Fueling & Pre-Tune",
+                description: "Completed a full pre-tuning upgrade service featuring PCV system enhancements, charcoal canister replacement, an upgraded fuel filter, a new high-pressure fuel pump (HPFP), and fresh spark plugs.",
+                photos: ["mk5-gti-1.jpg", "mk5-gti-2.jpg", "mk5-gti-3.jpg", "mk5-gti-4.jpg"]
+            },
+            {
+                title: "Mini Cooper — Front-End Reassembly",
+                category: "Mechanical Reassembly",
+                description: "Precision front-end assembly and cooling system fitment to manufacturer specifications.",
+                photos: ["mini-cooper-1.jpg", "mini-cooper-2.jpg", "mini-cooper-3.jpg", "mini-cooper-4.jpg"]
+            },
+            {
+                title: "VW Polo GTI — DSG Mechatronic Unit Rebuild",
+                category: "DSG Specialist",
+                description: "Refurbished and rebuilt the factory DSG mechatronic unit instead of fitting a risky second-hand replacement, verified with live hydraulic pressure diagnostics.",
+                photos: ["polo-gti-mechatronic-1.jpg", "polo-gti-mechatronic-2.jpg"]
+            },
+            {
+                title: "Audi A4 1.8T — Timing Chain Replacement & Rectification",
+                category: "Major Mechanical",
+                description: "Cleaned out substandard sealant and materials left by a previous mechanic and installed a complete new timing chain kit.",
+                photos: ["audi-a4-timing-1.jpg", "audi-a4-timing-2.jpg", "audi-a4-timing-3.jpg", "audi-a4-timing-4.jpg", "audi-a4-timing-5.jpg"]
+            }
+        ];
+
+        // Placeholder SVG generator if photos are missing
+        function getFallbackImage(title) {
+            const encodedTitle = encodeURIComponent(title);
+            return `https://placehold.co/800x600/141419/e60012?text=VAGREV+Work%0A${encodedTitle}`;
+        }
+
+        // Render Workshop Gallery
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('gallery-grid');
+            if (!container) return;
+
+            galleryJobs.forEach((job, jobIdx) => {
+                const hasMultiple = job.photos.length > 1;
+
+                const cardHtml = `
+                    <div class="bg-cardbg border border-cardborder rounded-2xl overflow-hidden shadow-xl hover:border-vagred/40 transition-all flex flex-col justify-between group">
+                        
+                        <!-- Image Container / Carousel -->
+                        <div class="relative aspect-video bg-darkbg overflow-hidden select-none">
+                            <div id="carousel-track-${jobIdx}" class="flex h-full transition-transform duration-300 ease-out">
+                                ${job.photos.map((src, pIdx) => `
+                                    <div class="w-full h-full flex-shrink-0 relative">
+                                        <img src="${src}" alt="${job.title} photo ${pIdx + 1}" 
+                                             class="w-full h-full object-cover"
+                                             onerror="this.onerror=null; this.src='${getFallbackImage(job.title)}';"/>
+                                    </div>
+                                `).join('')}
+                            </div>
+
+                            <!-- Category Badge -->
+                            <div class="absolute top-3 left-3 bg-darkbg/80 backdrop-blur-md text-vagred border border-cardborder text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md z-10">
+                                ${job.category}
+                            </div>
+
+                            ${hasMultiple ? `
+                                <!-- Prev / Next Arrows -->
+                                <button onclick="prevSlide(${jobIdx})" class="absolute left-2 top-1/2 -translate-y-1/2 bg-darkbg/70 hover:bg-vagred text-white w-8 h-8 rounded-full flex items-center justify-center transition-all z-20 border border-cardborder shadow-md">
+                                    <i class="fa-solid fa-chevron-left text-xs"></i>
+                                </button>
+                                <button onclick="nextSlide(${jobIdx})" class="absolute right-2 top-1/2 -translate-y-1/2 bg-darkbg/70 hover:bg-vagred text-white w-8 h-8 rounded-full flex items-center justify-center transition-all z-20 border border-cardborder shadow-md">
+                                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                                </button>
+
+                                <!-- Image Counter -->
+                                <div id="counter-${jobIdx}" class="absolute bottom-3 right-3 bg-darkbg/80 backdrop-blur-md text-gray-300 text-[10px] font-mono px-2 py-0.5 rounded-md border border-cardborder z-10">
+                                    1 / ${job.photos.length}
+                                </div>
+
+                                <!-- Dots Indicator -->
+                                <div id="dots-${jobIdx}" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-1.5 z-10">
+                                    ${job.photos.map((_, dotIdx) => `
+                                        <button onclick="goToSlide(${jobIdx}, ${dotIdx})" class="w-2 h-2 rounded-full transition-all ${dotIdx === 0 ? 'bg-vagred w-4' : 'bg-gray-500/60'}"></button>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-heading font-bold text-white mb-2 leading-snug group-hover:text-vagred transition-colors">
+                                    ${job.title}
+                                </h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                                    ${job.description}
+                                </p>
+                            </div>
+
+                            <div class="pt-4 border-t border-cardborder/60 flex items-center justify-between">
+                                <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                    <i class="fa-solid fa-camera mr-1 text-vagred"></i> ${job.photos.length} ${job.photos.length === 1 ? 'Photo' : 'Photos'}
+                                </span>
+                                <a href="#booking" class="text-xs font-bold text-vagred hover:underline flex items-center space-x-1">
+                                    <span>Book Similar Work</span>
+                                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                `;
+                container.innerHTML += cardHtml;
+            });
+        });
+
+        // Carousel State tracking
+        const carouselStates = {};
+
+        function getJobState(jobIdx) {
+            if (carouselStates[jobIdx] === undefined) {
+                carouselStates[jobIdx] = 0;
+            }
+            return carouselStates[jobIdx];
+        }
+
+        function updateCarousel(jobIdx) {
+            const track = document.getElementById(`carousel-track-${jobIdx}`);
+            const counter = document.getElementById(`counter-${jobIdx}`);
+            const dotsContainer = document.getElementById(`dots-${jobIdx}`);
+            const currentIdx = getJobState(jobIdx);
+            const total = galleryJobs[jobIdx].photos.length;
+
+            if (track) {
+                track.style.transform = `translateX(-${currentIdx * 100}%)`;
+            }
+
+            if (counter) {
+                counter.innerText = `${currentIdx + 1} / ${total}`;
+            }
+
+            if (dotsContainer) {
+                const dots = dotsContainer.querySelectorAll('button');
+                dots.forEach((dot, idx) => {
+                    if (idx === currentIdx) {
+                        dot.className = 'w-4 h-2 bg-vagred rounded-full transition-all';
+                    } else {
+                        dot.className = 'w-2 h-2 bg-gray-500/60 rounded-full transition-all';
+                    }
+                });
+            }
+        }
+
+        function nextSlide(jobIdx) {
+            const total = galleryJobs[jobIdx].photos.length;
+            carouselStates[jobIdx] = (getJobState(jobIdx) + 1) % total;
+            updateCarousel(jobIdx);
+        }
+
+        function prevSlide(jobIdx) {
+            const total = galleryJobs[jobIdx].photos.length;
+            carouselStates[jobIdx] = (getJobState(jobIdx) - 1 + total) % total;
+            updateCarousel(jobIdx);
+        }
+
+        function goToSlide(jobIdx, slideIdx) {
+            carouselStates[jobIdx] = slideIdx;
+            updateCarousel(jobIdx);
+        }
+    </script>
+</body>
+</html>
