@@ -380,6 +380,41 @@
         <p>&copy; 2026 VAGREV VAG Specialist (Ash • H). All rights reserved.</p>
     </footer>
 
+    <!-- Fullscreen Lightbox Modal -->
+    <div id="lightbox-modal" class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md hidden flex flex-col items-center justify-between p-4 sm:p-6 transition-opacity duration-300">
+        <!-- Top Bar -->
+        <div class="w-full max-w-6xl flex items-center justify-between z-10 text-white">
+            <div class="flex flex-col">
+                <span id="lightbox-category" class="text-xs uppercase tracking-widest text-vagred font-bold">Category</span>
+                <h4 id="lightbox-title" class="text-base sm:text-xl font-heading font-bold text-white">Job Title</h4>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span id="lightbox-counter" class="text-xs sm:text-sm font-mono bg-cardbg/80 border border-cardborder px-3 py-1 rounded-full text-gray-300">1 / 1</span>
+                <button onclick="closeLightbox()" class="text-gray-400 hover:text-white bg-cardbg hover:bg-vagred w-10 h-10 rounded-full flex items-center justify-center transition-all border border-cardborder">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Center Image View -->
+        <div class="relative w-full max-w-6xl flex-1 flex items-center justify-center my-4 overflow-hidden" onclick="closeLightboxOnBackdrop(event)">
+            <button id="lightbox-prev" onclick="lightboxNav(-1); event.stopPropagation();" class="absolute left-2 sm:left-4 z-20 bg-black/70 hover:bg-vagred text-white w-12 h-12 rounded-full flex items-center justify-center transition-all border border-white/10 shadow-2xl">
+                <i class="fa-solid fa-chevron-left text-base"></i>
+            </button>
+            
+            <img id="lightbox-img" src="" alt="Full view" class="max-h-[80vh] max-w-full object-contain rounded-lg shadow-2xl transition-all duration-200" />
+            
+            <button id="lightbox-next" onclick="lightboxNav(1); event.stopPropagation();" class="absolute right-2 sm:right-4 z-20 bg-black/70 hover:bg-vagred text-white w-12 h-12 rounded-full flex items-center justify-center transition-all border border-white/10 shadow-2xl">
+                <i class="fa-solid fa-chevron-right text-base"></i>
+            </button>
+        </div>
+
+        <!-- Bottom Caption -->
+        <div class="w-full max-w-3xl text-center pb-2 z-10">
+            <p id="lightbox-desc" class="text-xs sm:text-sm text-gray-300 font-light">Description</p>
+        </div>
+    </div>
+
     <!-- Interactive Workshop Gallery Logic -->
     <script>
         const galleryJobs = [
@@ -478,6 +513,10 @@
         // Track active photo index per card
         const cardIndices = galleryJobs.map(() => 0);
 
+        // Lightbox state
+        let currentActiveJob = null;
+        let currentActivePhotoIdx = 0;
+
         function renderGallery() {
             const grid = document.getElementById('gallery-grid');
             if (!grid) return;
@@ -489,15 +528,15 @@
 
                 // Indicator dots
                 const dots = hasMultiple ? job.photos.map((_, pIdx) => `
-                    <button onclick="setPhoto(${jobIdx}, ${pIdx})" class="w-2 h-2 rounded-full transition-all ${pIdx === currentIdx ? 'bg-vagred w-4' : 'bg-gray-600 hover:bg-gray-400'}"></button>
+                    <button onclick="event.stopPropagation(); setPhoto(${jobIdx}, ${pIdx});" class="w-2 h-2 rounded-full transition-all ${pIdx === currentIdx ? 'bg-vagred w-4' : 'bg-gray-600 hover:bg-gray-400'}"></button>
                 `).join('') : '';
 
                 // Prev/Next Nav Controls
                 const navButtons = hasMultiple ? `
-                    <button onclick="changePhoto(${jobIdx}, -1)" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-vagred text-white w-9 h-9 rounded-full flex items-center justify-center transition-all z-20 shadow-md">
+                    <button onclick="event.stopPropagation(); changePhoto(${jobIdx}, -1);" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-vagred text-white w-9 h-9 rounded-full flex items-center justify-center transition-all z-20 shadow-md">
                         <i class="fa-solid fa-chevron-left text-xs"></i>
                     </button>
-                    <button onclick="changePhoto(${jobIdx}, 1)" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-vagred text-white w-9 h-9 rounded-full flex items-center justify-center transition-all z-20 shadow-md">
+                    <button onclick="event.stopPropagation(); changePhoto(${jobIdx}, 1);" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-vagred text-white w-9 h-9 rounded-full flex items-center justify-center transition-all z-20 shadow-md">
                         <i class="fa-solid fa-chevron-right text-xs"></i>
                     </button>
                     <div class="absolute top-3 right-3 bg-black/80 backdrop-blur-sm text-white text-[11px] font-mono px-2.5 py-1 rounded-full border border-white/10 z-20">
@@ -508,13 +547,17 @@
                 return `
                     <div class="bg-cardbg border border-cardborder rounded-2xl overflow-hidden flex flex-col hover:border-vagred/40 transition-all shadow-xl group">
                         <!-- Image Carousel Container -->
-                        <div class="relative aspect-video w-full bg-darkbg overflow-hidden flex items-center justify-center">
+                        <div onclick="openLightbox(${jobIdx}, ${currentIdx})" class="relative h-64 sm:h-72 w-full bg-black/90 overflow-hidden flex items-center justify-center cursor-pointer group/img">
                             <img src="${photoSrc}" alt="${job.title}" 
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+                                class="w-full h-full object-contain p-2 transition-transform duration-300 group-hover/img:scale-105" 
                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/141419/e60012?text=${encodeURIComponent(job.title.split('—')[0].trim())}';" />
                             ${navButtons}
                             <div class="absolute top-3 left-3 bg-vagred text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded shadow-md z-20">
                                 ${job.category}
+                            </div>
+                            <div class="absolute bottom-3 left-3 bg-black/70 text-white text-[11px] px-2.5 py-1 rounded-full opacity-0 group-hover/img:opacity-100 transition-opacity z-20 flex items-center space-x-1.5">
+                                <i class="fa-solid fa-expand text-[10px] text-vagred"></i>
+                                <span>Click to expand</span>
                             </div>
                         </div>
 
@@ -532,7 +575,10 @@
                                     <i class="fa-solid fa-wrench text-vagred"></i>
                                     <span>VAGREV Workshop</span>
                                 </span>
-                                <span>${job.photos.length} ${job.photos.length === 1 ? 'Photo' : 'Photos'}</span>
+                                <button onclick="openLightbox(${jobIdx}, ${currentIdx})" class="text-gray-400 hover:text-vagred transition-colors flex items-center space-x-1 font-medium">
+                                    <span>${job.photos.length} ${job.photos.length === 1 ? 'Photo' : 'Photos'}</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -550,6 +596,75 @@
             cardIndices[jobIdx] = photoIdx;
             renderGallery();
         }
+
+        // Lightbox Functions
+        function openLightbox(jobIdx, photoIdx) {
+            currentActiveJob = jobIdx;
+            currentActivePhotoIdx = photoIdx;
+            updateLightboxContent();
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        function closeLightboxOnBackdrop(e) {
+            if (e.target === e.currentTarget || e.target.id === 'lightbox-img') {
+                closeLightbox();
+            }
+        }
+
+        function lightboxNav(direction) {
+            if (currentActiveJob === null) return;
+            const job = galleryJobs[currentActiveJob];
+            const total = job.photos.length;
+            currentActivePhotoIdx = (currentActivePhotoIdx + direction + total) % total;
+            cardIndices[currentActiveJob] = currentActivePhotoIdx; // keep card synced
+            renderGallery();
+            updateLightboxContent();
+        }
+
+        function updateLightboxContent() {
+            if (currentActiveJob === null) return;
+            const job = galleryJobs[currentActiveJob];
+            const src = job.photos[currentActivePhotoIdx];
+
+            document.getElementById('lightbox-category').innerText = job.category;
+            document.getElementById('lightbox-title').innerText = job.title;
+            document.getElementById('lightbox-desc').innerText = job.description;
+            document.getElementById('lightbox-counter').innerText = `${currentActivePhotoIdx + 1} / ${job.photos.length}`;
+            
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            img.onerror = () => {
+                img.src = `https://placehold.co/1200x800/141419/e60012?text=${encodeURIComponent(job.title.split('—')[0].trim())}`;
+            };
+
+            const prevBtn = document.getElementById('lightbox-prev');
+            const nextBtn = document.getElementById('lightbox-next');
+
+            if (job.photos.length <= 1) {
+                prevBtn.classList.add('hidden');
+                nextBtn.classList.add('hidden');
+            } else {
+                prevBtn.classList.remove('hidden');
+                nextBtn.classList.remove('hidden');
+            }
+        }
+
+        // Keyboard navigation for Lightbox
+        document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('lightbox-modal');
+            if (modal.classList.contains('hidden')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') lightboxNav(-1);
+            if (e.key === 'ArrowRight') lightboxNav(1);
+        });
 
         document.addEventListener('DOMContentLoaded', renderGallery);
     </script>
